@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="pipi蛋">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhanpengguo.github.io/pic/background/3/1.jpg">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200819163552.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200819163552.png">
 <meta property="og:image" content="https://zhanpengguo.github.io/pic/me/qrcode-8cm.jpg#pic_center">
 <meta property="article:published_time" content="2020-08-22T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-02-19T02:53:45.940Z">
@@ -282,7 +282,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Thread t = Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map = getMap(t);</span><br><span class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>) &#123;</span><br><span class="line">        ThreadLocalMap.Entry e = map.getEntry(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">            T result = (T)e.value;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> setInitialValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个方法也很简单，获取到ThreadLocalMap，然后通过this，也就是ThreadLocal来获取value。</p>
 <p>通过上面两个方法，我们知道，ThreadLocal相当于工具类，用它来操作Thread中的ThreadLocalMap。那这三者是什么关系呢？我们用下面这个图来表示一下：</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200819163552.png"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200819163552.png"></p>
 <p>上图中有一条虚线，它表示弱引用，这就和内存泄漏有关系了</p>
 <h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p>在提到内存泄漏，很多人会联想到内存溢出，这里先解释一下两者分别是什么意思：</p>
 <ul>

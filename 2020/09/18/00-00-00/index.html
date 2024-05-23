@@ -26,8 +26,8 @@
 <meta property="og:site_name" content="pipi蛋">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhanpengguo.github.io/pic/background/5/2.jpg">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200917212127.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200917212205.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200917212127.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200917212205.png">
 <meta property="og:image" content="https://zhanpengguo.github.io/pic/me/qrcode-8cm.jpg#pic_center">
 <meta property="article:published_time" content="2020-09-17T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-02-19T01:06:03.671Z">
@@ -277,8 +277,8 @@
 <p>但是，<strong>AOF日志文件很大</strong>，如果执行整个AOF日志，将会非常耗时，导致redis卡顿，这样肯定是不行的。这时候我们就需要对AOF进行“瘦身”。</p>
 <p>AOF日志怎么瘦身呢？redis同样使用一个新的进程来处理，这个进程对内存数据进行遍历，然后转换成一系列redis的操作指令，序列化到一个新的AOF中，然后将AOF瘦身操作期间产生的增量AOF日志再写入到新AOF日志中，最后将新AOF日志替换原AOF日志，这样瘦身工作就完成了。</p>
 <p>这种做法为啥能起到瘦身的作用呢？比如redis曾经有这样的操作：先增加了一条数据，然后又删除了这条数据。在原AOF日志中记录着两条指令，一条新增、一条删除。而转换成新的AOF日志中，对内存数据遍历时，没有发现这条数据，因此对应的是一条指令都没有。这样就起到了瘦身的作用。</p>
-<h3 id="两者优缺点"><a href="#两者优缺点" class="headerlink" title="两者优缺点"></a>两者优缺点</h3><p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200917212127.png"></p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200917212205.png"></p>
+<h3 id="两者优缺点"><a href="#两者优缺点" class="headerlink" title="两者优缺点"></a>两者优缺点</h3><p><img src="https://zhanpengguo.github.io/mypic/img/20200917212127.png"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200917212205.png"></p>
 <h3 id="最终的选择"><a href="#最终的选择" class="headerlink" title="最终的选择"></a>最终的选择</h3><p>当我们redis挂了重启时，一般不会选择RDB来加载持久化数据，因为会有部分数据丢失。但是选择AOF日志的话，它会比RDB慢很多，启动redis实例会花费很长时间。为了解决这个问题，redis4.0提供了一个新的持久化选项–<strong>混合持久化</strong>，这种方式是将RDB持久化开始到结束这段时间内会丢失的数据交给AOF日志来记录，这样大部分数据都交给RDB来恢复，而小部分数据交给AOF日志，从而<strong>保证了数据恢复速度，而且数据也基本不会丢失</strong>，两全其美。</p>
 <hr>
 <center>扫一扫，关注我</center>

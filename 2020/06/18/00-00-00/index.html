@@ -26,20 +26,20 @@
 <meta property="og:site_name" content="pipi蛋">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhanpengguo.github.io/pic/background/2/1.jpg">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200612161339.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200615114146.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200612163234.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200617132056.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200615114906.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200615123056.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200615153320.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200617131901.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200615160616.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200617090403.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200616131307.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200616132012.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200617081446.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200612161339.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200615114146.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200612163234.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200617132056.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200615114906.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200615123056.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200615153320.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200617131901.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200615160616.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200617090403.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200616131307.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200616132012.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200617081446.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93.jpg">
 <meta property="og:image" content="https://zhanpengguo.github.io/pic/me/qrcode-8cm.jpg#pic_center">
 <meta property="article:published_time" content="2020-06-17T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-02-19T01:06:03.762Z">
@@ -278,13 +278,13 @@
 <p>当我们在浏览器输入<a href="http://www.baidu.com，回车以后，是怎么显示百度页面的？">www.baidu.com，回车以后，是怎么显示百度页面的？</a></p>
 </blockquote>
 <h3 id="首先通过DNS查询IP"><a href="#首先通过DNS查询IP" class="headerlink" title="首先通过DNS查询IP"></a>首先通过DNS查询IP</h3><p>首先我们要知道查询服务器都是通过IP来查找的，那么第一步就要查询<a href="http://www.baidu.com这个域名对应的IP是什么，这时候就需要去查询DNS服务器，那这个DNS服务器的地址我们怎么知道呢？一般DNS服务器地址可以自动获取或者手动设置">www.baidu.com这个域名对应的IP是什么，这时候就需要去查询DNS服务器，那这个DNS服务器的地址我们怎么知道呢？一般DNS服务器地址可以自动获取或者手动设置</a></p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200612161339.png" alt="DNS"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200612161339.png" alt="DNS"></p>
 <p>DNS服务器地址知道了，那浏览器是怎么去查DNS服务器的呢？这就需要调用Socket库，里面封装了通过域名查询IP的方法，这个方法里具体做了什么，我们后面再说，注意一点：<strong>查询DNS服务器使用的是UDP，而且DNS服务器不是一台，是很多台组成的DNS服务网相互接力，完成域名查找</strong>。</p>
 <h3 id="组装HTTP包"><a href="#组装HTTP包" class="headerlink" title="组装HTTP包"></a>组装HTTP包</h3><p><a target="_blank" rel="noopener" href="http://www.baidu.com对应的ip我们拿到了,接下来就要正式开始我们的旅程了./">www.baidu.com对应的IP我们拿到了，接下来就要正式开始我们的旅程了。</a></p>
 <p>首先，浏览器查询这个地址属于http请求，那我们就要组装对应的http包，<strong>http包一般分为请求头和请求体</strong>，</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200615114146.png" alt="HTTP包"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200615114146.png" alt="HTTP包"></p>
 <p>在浏览器按f12可以查看每个请求的http报文，如下</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200612163234.png"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200612163234.png"></p>
 <p>因为我们只是在地址栏输入了<a target="_blank" rel="noopener" href="http://www.baidu.com,没有请求体,平时我们提交表单等其他操作时,在这里可以看到对应的请求体.请求头都是键值对,每个键都有对应的含义.而请求体的格式就各种各样了,一般根据请求头的content-type字段来决定./">www.baidu.com，没有请求体，平时我们提交表单等其他操作时，在这里可以看到对应的请求体。请求头都是键值对，每个键都有对应的含义。而请求体的格式就各种各样了，一般根据请求头的Content-type字段来决定。</a></p>
 <h3 id="组装TCP包"><a href="#组装TCP包" class="headerlink" title="组装TCP包"></a>组装TCP包</h3><p>在组装TCP数据之前，我先解释一下TCP/IP协议，准确来说，它应该是叫<strong>TCP/IP协议簇</strong>，指的是能够在不同网络间实现信息传输的协议簇，里面包括FTP\SMTP\TCP\UDP\IP等等，因为里面TCP和IP具有代表性，所以把它叫做TCP/IP协议。</p>
 <p>浏览器在组装好HTTP报文以后，会调用Socket库里相应的方法来把报文委托给TCP/IP协议栈来处理。</p>
@@ -298,25 +298,25 @@
 <p>在解释上面操作之前，我们要清楚TCP是面向连接的，客户端和服务端通信首先需要建立连接，然后才能通信。其实这个连接就是两边的套接字连接形成一个虚拟的管道，下文用socket表示套接字。</p>
 <p>发送数据，我们首先来看一下前三步。</p>
 <p><strong>第一步通过socket(参数)来获得socket描述符</strong>。先来介绍一下什么是描述符，描述符可以理解为一种事物的索引，例如文件描述符，操作系统如果要操作文件，需要通过文件描述符来访问文件，socket描述符也是一样，操作socket需要通过socket描述符。后面的操作都是通过socket来完成，所以我们首先要获得socket描述符。可以通过<code>netstat -ano</code>查看本机创建的socket。</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200617132056.png" alt="本机socket"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200617132056.png" alt="本机socket"></p>
 <p><strong>第二步通过connect(参数)来和服务端建立链接</strong>。这里就是我们面试经常被问到的<strong>三次握手</strong>了，我们简单的回顾一下什么是三次握手，首先客户端会生成一个SYN比特位为1的TCP包发送给服务端，服务端接收到以后也会发一个SYN比特位为1的TCP包给客户端，但是这个TCP包里还包含了一个确认收到客户端包的ACK号，最后客户端收到服务端发过来的包以后会返回一个确认号ACK给服务端，这样客户端和服务端就建立连接了，客户端的socket和服务端的socket就像是通过一个管道连接起来了。</p>
 <p><strong>第三步通过write(参数)来发送数据</strong>。连接建立好以后，就要开始发送数据了，在调用read方法里会将数据委托给TCP模块来处理，TCP模块接受到数据后，会在请求包前面加上TCP头部，里面包含发送方和接收方的端口，用来查找具体连接哪个socket。</p>
 <p>TCP模块收到数据并不会马上发送数据，因为数据怎样发送是应用程序来控制的，有的程序是一次性发送所有数据，有的确实逐字节或者逐行发送，如果TCP模块接到数据就马上发送，那可能会出现发送一堆小包的情况，导致网络效率下降。那TCP在什么时候发送数据呢？<strong>当TCP收到数据以后，会放入缓冲区，当数据达到一个网络包的最大长度时，或者等待超过一定时间时，就会执行发送操作</strong>。</p>
 <p>HTTP请求消息一般不会很长，一个网络包就能装下，但如果请求数据很大，超过了一个网络包的最大容量，这就需要对包进行拆分，拆分后的每个包前面都加上TCP头部，</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200615114906.png" alt="HTTP拆包"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200615114906.png" alt="HTTP拆包"></p>
 <p><strong>第四步通过read(参数)来获取数据</strong>。和发送数据一样，接收的数据会先暂存在缓冲区，当调用read方法获取数据时，会先从缓冲区中取数据，如果缓冲区中还没有数据，则挂起当前线程，等接收到返回数据以后，先判断数据包是否完整，如果不完整则继续接收剩下的数据包，接收完以后按顺序连接起来还原出原始的数据，最后将数据交给应用程序。</p>
 <p><strong>第五步最后close(描述符)关闭socket</strong>。这就是我们熟悉的<strong>四次挥手</strong>，再来回顾一下四次挥手，当服务器响应消息后，这时请求过程就结束了，服务器一方会发起断开过程，这是HTTP1.0，如果是HTTP1.1则是客户端发起端口过程，两者只是开头不一样，过程都是一样的。</p>
 <p>首先客户端程序调用close方法，TCP模块会生成包含端口信息的TCP头部，里面FIN比特位为1，服务端收到FIN为1的TCP头部时，会将自己的socket标记改为断开状态，然后返回给客户端一个ACK号。服务端同样也会调用close方法来关闭socket，发送一个FIN为1的TCP头部包给客户端，然后客户端会返回一个ACK号给服务端。至此双方就断开连接了。</p>
 <p>上面提到的三次握手和四次挥手如图</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200615123056.png" alt="三次握手和四次挥手"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200615123056.png" alt="三次握手和四次挥手"></p>
 <h3 id="组装IP包"><a href="#组装IP包" class="headerlink" title="组装IP包"></a>组装IP包</h3><p>TCP模块在执行连接、收发和断开等操作时，都需要委托IP模块将包发送给通信对象。<strong>IP模块会在TCP包前面加上IP头部和MAC头部</strong>，IP头部里记录了源IP和目的IP，MAC头部里记录了下一个路由设备的MAC地址。这里要明确一点，<strong>IP头部是IP协议，而MAC头部是以太网协议</strong>（以太网可以简单的理解成局域网）。</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200615153320.png" alt="IP包"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200615153320.png" alt="IP包"></p>
 <p>IP头部中的IP地址是固定不变的，一直是目的服务器的IP地址，但是MAC头部中的MAC地址是变化的，当请求包到达第一个路由器时，路由器会根据路由表查出下一个路由器的MAC地址，然后将此MAC地址替换原MAC地址，再继续转发。一个请求包从客户端到服务端一般会经过多个路由器。</p>
 <p>那是怎么从IP得到MAC地址的呢？这就需要通过<strong>ARP</strong>(Address Resolution Protocol)来查询，ARP其实就是一种广播，把包发给以太网中所有设备，当其中设备发现包中IP是自己的，就会返回信息告诉自己的MAC地址。当然这种每次都广播太耗性能了，所以会有ARP缓存，如果以前查过此IP的MAC地址，那ARP缓存中会有记录，直接查缓存就行了，如果缓存中没有再进行ARP广播。可以通过<code>arp -a</code>命令来查看本地ARP缓存记录。</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200617131901.png" alt="ARP缓存"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200617131901.png" alt="ARP缓存"></p>
 <h3 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h3><p><strong>IP生成的包只是存在内存中的一串数字信息，无法直接发送给对方，因此我们需要将数字信息转换为电或光信号，才能在网线中传输，负责这一步的就是网卡</strong>。但是光有网卡还不行，还需要网卡驱动，各种硬件设备都有自己的驱动程序，当然网卡也不例外，驱动程序就是硬件厂商开发的专用程序。</p>
 <p>网卡驱动从IP模块获取包之后，会将其复制到网卡内的缓冲区中，然后向MAC模块（这里MAC模块和IP中的MAC头部区分开）发送发送命令，MAC模块从缓冲区中取出包，并在开头加上报头和起始帧分界符，在末尾加上用于检测错误的FCS帧校验序列。</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200615160616.png" alt="网卡包"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200615160616.png" alt="网卡包"></p>
 <p><strong>用电信号来表示数字信息时，就需要让0和1两种比特分别对应特定的电压和电流</strong>，通过电信号来读取数字信息过程则相反。在测量电压和电流时，必须判断每个比特的界限在哪里，如果数字信号有连续的0或者1，则很难判断界限在哪。要解决这个问题，可以添加一个用于参照的时钟信号，它是一串均匀变化的电信号。将数字信号和时钟叠加在一起传输就可以了，读取数字信号减去时钟信号就可以了。</p>
 <h3 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h3><p>加上报头、起始帧分界符和FCS之后，就可以将包通过网线发送出去了。发送信号分为两种，使用集线器的半双工模式（同一时刻只能发送或者接收）和使用交换机的全双工模式（同一时刻发送和接收可以并行）。<strong>现在基本都是交换机的全双工模式了</strong>。</p>
 <p>在半双工模式下，为了避免信号碰撞，首先要判断网线中是否有其他信号在传输，如果有，则需要等待其他信号传输完毕再进行传输，网卡中MAC模块将包从报头到FCS按每个比特转换成电信号，然后由PHY/MAU（两者传输速率不同）模块将信号转换为可在网线中传输的格式后通过网线发送出去。</p>
@@ -329,21 +329,21 @@
 <p>首先路由器通过端口将包接收进来，这个过程取决于端口对应的通信技术，如果是以太网端口，就按照以太网规范工作，如果是无线局域网端口，就按照无线局域网的规范工作。<strong>接收到包以后先判断包中MAC地址是不是自己的，如果不是自己的则直接丢弃</strong>，如果是自己的则交给转发模块，接下来转发模块会根据接收到的包的IP头部中接收方IP地址在路由表中查询对应的端口，最后通过对应的端口转发出去。</p>
 <p>路由器工作过程看起来和交换机很类似，但是两者还是有区别的，首先<strong>路由器各个端口都是有MAC地址和IP地址的</strong>，这和计算机中网卡一样，也就是路由器会成为发送方或者接收方。而交换机不是，它的端口没有MAC地址，不会成为发送方或者接收方，交换机用作包的转发。而且交换机是根据MAC头部中的MAC地址来转发的，而路由器是根据IP头部中的IP地址来转发的。</p>
 <p>在交换机中，需要匹配MAC地址和地址表中完全一致的记录，而<strong>路由器则匹配IP地址中的网络号部分</strong>，下面是一张简单的路由器路由表</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200617090403.png" alt="路由表"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200617090403.png" alt="路由表"></p>
 <p>在这里解释一下什么是<strong>子网掩码</strong>，IP地址一般分为网络号和主机号，子网掩码就是用来区分网络号和主机号，比如一个IP地址：10.11.6.54，子网掩码是：255.255.255.0。子网前三位都是255，对应二进制都是1，那前三位表示网络号，后面一位是主机号。那10.11.6.54对应的网络号是10.11.6，主机号是54。</p>
 <p>前面说的路由器只匹配IP地址中的网络号部分，那IP地址是10.11.6开头的都会匹配到第一条记录。<strong>如果找不到匹配记录，则会匹配最后一个0.0.0.0默认路由</strong>。</p>
 <p>路由器包的转发和计算机类似，先查询路由表中对应的转发记录，如果对应的网关是IP，则下一个转发地址就是这个网关IP，如果网关地址是空的，则下一个转发地址是包中目的IP，然后通过ARP获取IP对应的MAC地址，接着改写原包中MAC头部中目的IP的MAC地址。</p>
 <p>一般路由器后面连着互联网，转发端口连着ADSL（电话线）或者FTTH（光纤）等等。</p>
 <h3 id="互联网接入路由器"><a href="#互联网接入路由器" class="headerlink" title="互联网接入路由器"></a>互联网接入路由器</h3><p>信号从以太网路由器到达互联网接入路由器进入互联网。</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200616131307.png" alt="互联网接入路由器"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200616131307.png" alt="互联网接入路由器"></p>
 <p>互联网接入路由器基本工作流程和以太网路由器一样，但是其中会有一点区别。**互联网接入路由器接收到以太网包以后，会取出IP包，然后会在其头部加上MAC头部（BAS的MAC地址）、PPPoE头部和PPP头部，然后发给ADSL Modem(猫)**。</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200616132012.png" alt="互联网接入路由器包"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200616132012.png" alt="互联网接入路由器包"></p>
 <h3 id="ADSL-Modem（猫）"><a href="#ADSL-Modem（猫）" class="headerlink" title="ADSL Modem（猫）"></a>ADSL Modem（猫）</h3><p><strong>ADSL Modem叫做调制解调器，因电话线中传递的只能是模拟电信号，而猫可以将数字信号转换为模拟电信号</strong>。</p>
 <p>ADSL Modem接收到互联网接入路由器传过来的包以后，会将包拆分成很多个信元（非常小的数据块），然后将这些信元转换成电信号发送出去。这里的电信号和以太网中的电信号有点不一样，以太网中使用的是方波，而这里使用的是圆滑波。</p>
 <p>ADSL Modem将信元转换成电信号以后，信号会进入<strong>分离器</strong>，然后ADSL信号会和电话信号一起从电话线传输出去，这个分离器的作用就是将ADSL信号和电话信号分离。</p>
 <p>信号从分离器出来以后会通过室内电话线，然后到达<strong>电线杆上的电话电缆</strong>。接着信号会到达电话局中的<strong>DSLAM</strong>，这是电话局用的多路ADSL Modem，用来将很多个ADSL Modem的功能集中在一起。到达DSLAM后，信号会还原成数字信号。</p>
 <p>信号从DSLAM出来后会到达一个叫<strong>BAS</strong>的包转发设备，BAS会将信元还原成原始的包，它会将包前面的MAC头部和PPPoE头部丢弃（这两个头部就是用来找BAS的，此时它们的任务完成了，可以被丢弃了），然后<strong>在包的前面加上隧道专用头部（L2TP）</strong>，并发送到隧道的出口。</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200617081446.png" alt="BAS包"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200617081446.png" alt="BAS包"></p>
 <p>所谓隧道，就类似于socket之间建立的TCP连接，数据从一端进入，会原封不动的从另一个出口出来，隧道也是如此。隧道有几种实现方式，TCP连接就是其中一种实现方式，这种方式需要在网络上的两台隧道路由器之间建立TCP连接，然后将两端的socket当作是路由器的端口，并从这个端口收发数据，这时的TCP就像是一根网线，包从这里穿过到达另一端。</p>
 <h3 id="运营商互联网"><a href="#运营商互联网" class="headerlink" title="运营商互联网"></a>运营商互联网</h3><p>数据从隧道路由器到达运营商路由器后就进入了运营商互联网，在运营商互联网中也会有多个运营商，它们通过IX（互联网交换中心）相连，这个IX和我们分布式系统中的注册中心有点类似，如果要连接其他运营商，必须通过IX来连接。由此可见，IX在运营商互联网中还是相当重要的，所以对于它，要做到高可用，首先IX的部署场地需要具备自主发电的能力，防止停电等原因，还必须具有抗震能力，一般具有这样能力的大楼里面都可能有IX设备。</p>
 <p>在各个运营商内部是通过NOC（网络运行中心）来连接的，各个POP（接入点）通过NOC来连接。简单点来说，<strong>POP用来连接外网系统（客户端和服务端），运营商内部各个POP通过NOC来连接，而各个运营商的NOC又通过IX来彼此连接</strong>。</p>
@@ -355,7 +355,7 @@
 <h3 id="到达服务器"><a href="#到达服务器" class="headerlink" title="到达服务器"></a>到达服务器</h3><p>当网络包经过负载服务器达到web服务器之后，服务器就会接收到这个包进行处理。首先说一些服务器和客户端有什么异同，在网卡，协议栈，Socket库等方面，两者是一样的，但是在Socket库的用法上是不同的，客户端是发起连接，而服务器是等待连接。客户端发送数据是使用的<strong>随机端口</strong>，而服务端接收请求，则需要绑定一个<strong>固定端口</strong>。</p>
 <p>服务器接收数据过程就是将客户端发送数据反过来，首先网卡将电信号或者光信号转换为数字信号，然后根据包末尾的FCS校错，正确的话就将数字信息保存在网卡缓冲区中，然后网卡驱动开始工作，将缓冲区中数据读取出来，交给TCP/IP协议栈来处理，接着IP模块查看IP头部，看看这个包是不是传给自己的，确认之后再将包转交给TCP模块处理。接着TCP模块查看TCP头部，如果其中SYN=1，则这个包是用来建立连接的，然后返回连接相关信息给客户端；如果接收到的是数据包，则根据发送方IP、接收方IP、接收方端口号和发送方端口号来找到对应的socket，然后将数据交给socket来处理，这样数据就会进入应用程序，最后根据请求内容向客户端浏览器返回相应的数据。</p>
 <p>至此，数据就从我们的浏览器到达了服务器，大致过程如下图，如需查看原图，可在公众号回复“网络传输”</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93.jpg" alt="网络传输"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93.jpg" alt="网络传输"></p>
 <hr>
 <center>扫一扫，关注我</center>
 

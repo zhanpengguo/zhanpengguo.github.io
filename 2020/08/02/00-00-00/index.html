@@ -26,8 +26,8 @@
 <meta property="og:site_name" content="pipi蛋">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zhanpengguo.github.io/pic/background/1/14.jpg">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200730160818.png">
-<meta property="og:image" content="https://gitee.com/zhanpg/mypic/raw/master/img/20200731084122.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200730160818.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/mypic/img/20200731084122.png">
 <meta property="og:image" content="https://zhanpengguo.github.io/pic/me/qrcode-8cm.jpg#pic_center">
 <meta property="article:published_time" content="2020-08-01T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-02-19T01:06:03.719Z">
@@ -265,7 +265,7 @@
 
 <h2 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h2><p>索引就跟我们的字典目录一样，如果一本字典没有目录，那么你要找一个字，那就相当费劲，得从头一点一点的找；在数据库中也是一样，如果一张表没有索引，那查询一条数据也是相当费劲。</p>
 <h2 id="索引是啥样的？"><a href="#索引是啥样的？" class="headerlink" title="索引是啥样的？"></a>索引是啥样的？</h2><p>我们都知道，在数据库中的表数据都是一行一行的，但是如果给它加上索引（如果有主键，就会自动生成主键索引），它会变成啥样呢？这里以最常见的B+树索引为例，表结构会变成树状，像下面这样：</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200730160818.png"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200730160818.png"></p>
 <h2 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h2><p>索引一般分为两个大类：聚集索引和非聚集索引。我们平时使用的主键索引就是聚集索引，一张表最多只能有一个聚集索引；而平时我们手动创建的普通索引、唯一索引和联合索引等等都属于非聚集索引。</p>
 <h2 id="索引的用处"><a href="#索引的用处" class="headerlink" title="索引的用处"></a>索引的用处</h2><p>可能很多人在平时使用数据库查询的时候，都没有使用到索引，自己也不创建索引，发现也能很顺畅的查询数据，并没感觉出来有没有索引的区别。这是因为数据量没那么大，有没有索引确实没多大区别。如果数据量达到千万级别或者上亿，那区别就出来了。</p>
 <p>索引除了提高查询性能外，还有一个用处：那就是应付面试了😏（面试问索引真的是巨多）。</p>
@@ -295,7 +295,7 @@
 <li>一张表最多不要建立超过5个索引；</li>
 </ol>
 <h2 id="最左匹配？"><a href="#最左匹配？" class="headerlink" title="最左匹配？"></a>最左匹配？</h2><p>当我们建好索引后，sql写的不好，也可能用不到索引。比如下面这张book表：</p>
-<p><img src="https://gitee.com/zhanpg/mypic/raw/master/img/20200731084122.png"></p>
+<p><img src="https://zhanpengguo.github.io/mypic/img/20200731084122.png"></p>
 <p>这张表有三个字段，假如我们在name字段上创建了一个普通索引，那下面这个sql就会使用到这个索引</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> book <span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;三%&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p>但是如果把 三% 改成 %三，那索引就会派不上用场了，像这样：</p>
