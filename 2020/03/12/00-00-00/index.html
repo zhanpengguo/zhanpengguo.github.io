@@ -25,21 +25,21 @@
 <meta property="og:url" content="http://blog.zhanpg.top/2020/03/12/00-00-00/index.html">
 <meta property="og:site_name" content="pipi蛋">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/background/4/9.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/python/pachong/bg-1.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/python/pachong/bg-2.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/python/pachong/bg-3.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/python/pachong/bg-4.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/python/pachong/bg-5.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/python/pachong/bg-6.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/python/pachong/bg-7.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/background/4/9.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/python/pachong/bg-1.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/python/pachong/bg-2.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/python/pachong/bg-3.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/python/pachong/bg-4.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/python/pachong/bg-5.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/python/pachong/bg-6.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/python/pachong/bg-7.jpg">
 <meta property="article:published_time" content="2020-03-11T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-02-19T01:06:03.661Z">
 <meta property="article:author" content="pipi蛋">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhanpg.gitee.io/pic/background/4/9.jpg">
+<meta name="twitter:image" content="https://zhanpengguo.github.io/pic/background/4/9.jpg">
 
 <link rel="canonical" href="http://blog.zhanpg.top/2020/03/12/00-00-00/">
 
@@ -263,7 +263,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="https://zhanpg.gitee.io/pic/background/4/9.jpg" style="zoom: 40%;"/>
+        <img src="https://zhanpengguo.github.io/pic/background/4/9.jpg" style="zoom: 40%;"/>
 
 <a id="more"></a>
 
@@ -280,15 +280,15 @@
 <p>我的<strong>python版本是3.7.3</strong></p>
 <p>上面提到的三个库，如果本地没安装，就需要通过pip安装一下了，pip install requests, pip install os, pip install <strong>beautifulsoup4</strong>，注意：这里需要安装beautifulsoup4，如果直接安装beautifulsoup就会默认安装bs3，这个基本不用了。</p>
 <p>使用bs4解析网页的时候需要使用解析器，当然bs4有自带的解析器，但是效率很低，这里我们使用<em>lxml</em>解析器，所以也要提前安装这个解析器，pip install lxml</p>
-<h2 id="分析网页"><a href="#分析网页" class="headerlink" title="分析网页"></a>分析网页</h2><p><img src="https://zhanpg.gitee.io/pic/python/pachong/bg-1.jpg" alt="首页"></p>
+<h2 id="分析网页"><a href="#分析网页" class="headerlink" title="分析网页"></a>分析网页</h2><p><img src="https://zhanpengguo.github.io/pic/python/pachong/bg-1.jpg" alt="首页"></p>
 <p>我们需要下载这一页所有合集的图，首先右键第一张图，检查元素</p>
-<p><img src="https://zhanpg.gitee.io/pic/python/pachong/bg-2.jpg" alt="检查元素"></p>
+<p><img src="https://zhanpengguo.github.io/pic/python/pachong/bg-2.jpg" alt="检查元素"></p>
 <p>里面的这些li标签，就是对应上面的各个合集，li里a标签的链接就是点进去具体图片的链接，接着分析进去后的页面</p>
-<p><img src="https://zhanpg.gitee.io/pic/python/pachong/bg-3.jpg" alt="子页面"></p>
+<p><img src="https://zhanpengguo.github.io/pic/python/pachong/bg-3.jpg" alt="子页面"></p>
 <p>我们需要1920x1080的真正图片，检查这个元素找到里面的链接</p>
-<p><img src="https://zhanpg.gitee.io/pic/python/pachong/bg-4.jpg" alt="检查元素"></p>
+<p><img src="https://zhanpengguo.github.io/pic/python/pachong/bg-4.jpg" alt="检查元素"></p>
 <p>找到链接以后进入得到我们需要下载的图片</p>
-<p><img src="https://zhanpg.gitee.io/pic/python/pachong/bg-5.jpg" alt="检查元素"></p>
+<p><img src="https://zhanpengguo.github.io/pic/python/pachong/bg-5.jpg" alt="检查元素"></p>
 <p>至此，我们已经找到第一个合集中第一张图片的下载地址，其他图片也是类似。接下来我们就需要编写爬虫，按照这个规则爬取所有图片。</p>
 <h2 id="编写爬虫"><a href="#编写爬虫" class="headerlink" title="编写爬虫"></a>编写爬虫</h2><p>首先导入我们需要的库</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure>
@@ -299,8 +299,8 @@
 <p>最后执行mian方法</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    home()</span><br></pre></td></tr></table></figure>
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>看一下成果图</p>
-<p><img src="https://zhanpg.gitee.io/pic/python/pachong/bg-6.jpg" alt="成果图"></p>
-<p><img src="https://zhanpg.gitee.io/pic/python/pachong/bg-7.jpg" alt="成果图"></p>
+<p><img src="https://zhanpengguo.github.io/pic/python/pachong/bg-6.jpg" alt="成果图"></p>
+<p><img src="https://zhanpengguo.github.io/pic/python/pachong/bg-7.jpg" alt="成果图"></p>
 <p>妈妈再也不用担心我没有电脑壁纸换了！</p>
 
     </div>

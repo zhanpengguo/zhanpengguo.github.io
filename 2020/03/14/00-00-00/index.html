@@ -25,10 +25,10 @@
 <meta property="og:url" content="http://blog.zhanpg.top/2020/03/14/00-00-00/index.html">
 <meta property="og:site_name" content="pipi蛋">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/background/5/1.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/redis/redis-1.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/redis/redis-2.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/redis/redis-3.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/background/5/1.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/redis/redis-1.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/redis/redis-2.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/redis/redis-3.png">
 <meta property="article:published_time" content="2020-03-13T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-02-19T08:33:26.119Z">
 <meta property="article:author" content="pipi蛋">
@@ -37,7 +37,7 @@
 <meta property="article:tag" content="缓存击穿">
 <meta property="article:tag" content="缓存雪崩">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhanpg.gitee.io/pic/background/5/1.jpg">
+<meta name="twitter:image" content="https://zhanpengguo.github.io/pic/background/5/1.jpg">
 
 <link rel="canonical" href="http://blog.zhanpg.top/2020/03/14/00-00-00/">
 
@@ -261,20 +261,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="https://zhanpg.gitee.io/pic/background/5/1.jpg" style="zoom: 40%;"/>
+        <img src="https://zhanpengguo.github.io/pic/background/5/1.jpg" style="zoom: 40%;"/>
 
 <a id="more"></a>
 
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>redis看上去很完美，但是世上没有毫无缺点的系统，redis也是如此。在一些高并发的系统中，redis可能会出现缓存穿透、缓存击穿和缓存雪崩这几个问题。接下来我们看看这几个问题的出现原因和解决方案。</p>
 <h2 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h2><p><strong>概述</strong>：查询条件在数据库中查不到任何结果时，redis中也不会缓存，则此类查询请求会全部落在数据库上，请求如果过大，会击垮数据库。</p>
-<p><img src="https://zhanpg.gitee.io/pic/redis/redis-1.jpg" alt="缓存穿透"></p>
+<p><img src="https://zhanpengguo.github.io/pic/redis/redis-1.jpg" alt="缓存穿透"></p>
 <p><strong>解决方案</strong>：1.采用布隆过滤器，（布隆过滤器其实是一个超大的bitmap，对每一种请求可能通过各种hash算法，映射到bitmap中不同位置，被映射到的位置值变成1，没有被映射到的位置值是0）。当请求过来时对请求做hash，如果映射到bitmap中的所有位置中有一个不是0，说明这个请求不可能存在，则直接返回，请求也不会到达数据库。<strong>布隆过滤器不能确定一定存在的请求，但能确定一定不存在的请求。</strong></p>
 <p>2.简单粗暴做法，如果数据库查不到此条数据，返回null，在redis中也将此结果缓存key-null。下次同样请求过来，到redis直接返回null。这种做法需要将null对应的key有效期设置的短一些，一般不超过五分钟。</p>
 <h2 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h2><p><strong>概述</strong>：key对应的数据在redis过期时，对应的查询请求会直接到达数据库，如果在数据回设到redis之前，这段时间请求过大，也会压垮数据库。</p>
-<p><img src="https://zhanpg.gitee.io/pic/redis/redis-2.jpg" alt="缓存击穿"></p>
+<p><img src="https://zhanpengguo.github.io/pic/redis/redis-2.jpg" alt="缓存击穿"></p>
 <p><strong>解决方案</strong>：加锁。能击穿缓存的肯定是热点数据，当热点数据请求进来时，如果redis中查不到此数据，则对此请求加上锁，如果是分布式环境，则需要加上分布式锁，等数据从数据库返回，重新进入缓存时，再释放锁，这样下个请求过来，就可以直接从redis中获取数据。</p>
 <h2 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h2><p><strong>概述</strong>：redis出现多个key的失效时间相同，当这些key同时失效时，这些key对应的请求就都会到达数据库，压垮数据库。</p>
-<p><img src="https://zhanpg.gitee.io/pic/redis/redis-3.png" alt="缓存雪崩"></p>
+<p><img src="https://zhanpengguo.github.io/pic/redis/redis-3.png" alt="缓存雪崩"></p>
 <p><strong>解决方案</strong>：在设置失效时间时添加一个随机值，防止多个key的过期时间重复，这样就很难出现集体失效的事件发生。</p>
 
     </div>

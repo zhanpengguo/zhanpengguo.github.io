@@ -25,16 +25,16 @@
 <meta property="og:url" content="http://blog.zhanpg.top/2020/04/06/00-00-00/index.html">
 <meta property="og:site_name" content="pipi蛋">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/background/3/3.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/io/io-1.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/io/io-2.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/background/3/3.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/io/io-1.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/io/io-2.jpg">
 <meta property="article:published_time" content="2020-04-05T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-02-19T01:06:03.560Z">
 <meta property="article:author" content="pipi蛋">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="IO">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhanpg.gitee.io/pic/background/3/3.jpg">
+<meta name="twitter:image" content="https://zhanpengguo.github.io/pic/background/3/3.jpg">
 
 <link rel="canonical" href="http://blog.zhanpg.top/2020/04/06/00-00-00/">
 
@@ -258,7 +258,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="https://zhanpg.gitee.io/pic/background/3/3.jpg" style="zoom: 40%;"/>
+        <img src="https://zhanpengguo.github.io/pic/background/3/3.jpg" style="zoom: 40%;"/>
 
 <a id="more"></a>
 
@@ -281,7 +281,7 @@
 </ol>
 <h2 id="二进制文件和字节流"><a href="#二进制文件和字节流" class="headerlink" title="二进制文件和字节流"></a>二进制文件和字节流</h2><p><em>二进制文件：所有文件里面的数据都是通过二进制来保存的，但为了方便处理数据，引入了文件类型的概念，主要分为文本文件和二进制文件。文本文件是指那些文本编辑器可以直接查看和编辑的文件，如.txt、.html、.java等文件；二进制文件是指一些特殊格式和功能的文件，如.zip、.jpg、.doc、.pdf等文件</em></p>
 <p>Java主要通过InputStream和OutputStream来实现二进制字节形式处理文件。</p>
-<p><img src="https://zhanpg.gitee.io/pic/io/io-1.jpg" alt="字节流"></p>
+<p><img src="https://zhanpengguo.github.io/pic/io/io-1.jpg" alt="字节流"></p>
 <h3 id="OutputStream"><a href="#OutputStream" class="headerlink" title="OutputStream"></a>OutputStream</h3><p>OutputStream主要有下面几个方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> b)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span> b[])</span> <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span> b[], <span class="keyword">int</span> off, <span class="keyword">int</span> len)</span> <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">flush</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span></span><br></pre></td></tr></table></figure>
 <p><code>write(int b)</code>方法向流中写入一个字节，需要子类来实现。</p>
@@ -304,7 +304,7 @@
 <h3 id="BufferedInputStream和BufferedOutputStream"><a href="#BufferedInputStream和BufferedOutputStream" class="headerlink" title="BufferedInputStream和BufferedOutputStream"></a>BufferedInputStream和BufferedOutputStream</h3><p>FileInputStream和FileOutputStream是没有缓冲的，按单个字节读写时性能比较低，虽然可以按字节数组读取来提高性能，但有时必须按字节读写，这时就需要<strong>将文件流包装到缓冲流中来提高性能。</strong></p>
 <p>使用方法只要在对应的流外层包上对应的缓冲类就行了，如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BufferedInputStream inputStream = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">&quot;hello.txt&quot;</span>));</span><br><span class="line">BufferedOutputStream outputStream = <span class="keyword">new</span> BufferedOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">&quot;hello.txt&quot;</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="文本文件和字符流"><a href="#文本文件和字符流" class="headerlink" title="文本文件和字符流"></a>文本文件和字符流</h2><p><img src="https://zhanpg.gitee.io/pic/io/io-2.jpg" alt="字符流"></p>
+<h2 id="文本文件和字符流"><a href="#文本文件和字符流" class="headerlink" title="文本文件和字符流"></a>文本文件和字符流</h2><p><img src="https://zhanpengguo.github.io/pic/io/io-2.jpg" alt="字符流"></p>
 <p>上面介绍了如何以字节流的方式处理文件，对于文本文件，字节流没有编码的概念，不能按行处理，使用不太方便，更适合用字符流来处理。</p>
 <p>字符流和字节流类似，也是有两个基类，Reader和Writer。<strong>Reader和InputStream类似，Writer和OutputStream类似</strong>，具体的操作都是通过子类来实现。</p>
 <h3 id="InputStreamReader和OutputStreamWriter"><a href="#InputStreamReader和OutputStreamWriter" class="headerlink" title="InputStreamReader和OutputStreamWriter"></a>InputStreamReader和OutputStreamWriter</h3><p><strong>InputStreamReader可以将InputStream转换为Reader</strong>，构造方法如下：</p>

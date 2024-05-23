@@ -25,16 +25,16 @@
 <meta property="og:url" content="http://blog.zhanpg.top/2020/03/17/00-00-00/index.html">
 <meta property="og:site_name" content="pipi蛋">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/background/3/7.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/mianshi/hashmap1.7-1.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/me/qrcode-8cm.jpg#pic_center">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/background/3/7.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/mianshi/hashmap1.7-1.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/me/qrcode-8cm.jpg#pic_center">
 <meta property="article:published_time" content="2020-03-16T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-02-19T01:06:03.539Z">
 <meta property="article:author" content="pipi蛋">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="HashMap">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhanpg.gitee.io/pic/background/3/7.jpg">
+<meta name="twitter:image" content="https://zhanpengguo.github.io/pic/background/3/7.jpg">
 
 <link rel="canonical" href="http://blog.zhanpg.top/2020/03/17/00-00-00/">
 
@@ -258,7 +258,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="https://zhanpg.gitee.io/pic/background/3/7.jpg" style="zoom: 40%;"/>
+        <img src="https://zhanpengguo.github.io/pic/background/3/7.jpg" style="zoom: 40%;"/>
 
 <a id="more"></a>
 
@@ -274,7 +274,7 @@
 <p>上面是put()方法，主要思路是通过添加元素的key计算出对应数组位置，如果这个位置是空的就直接走下面addEntry()，如果不是空的就遍历里面的链表，看看是否有相同key，如果有就覆盖旧值，如果没有就走下面的addEntry()。下面我们来看看addEntry()里添加元素的具体细节</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEntry</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">int</span> bucketIndex)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//e表示原链表</span></span><br><span class="line">	Entry&lt;K,V&gt; e = table[bucketIndex];</span><br><span class="line">    <span class="comment">//设置新链表</span></span><br><span class="line">    table[bucketIndex] = <span class="keyword">new</span> Entry&lt;K,V&gt;(hash, key, value, e);</span><br><span class="line">    <span class="keyword">if</span> (size++ &gt;= threshold)</span><br><span class="line">        <span class="comment">//size+1以后如果大于阈值，就会扩容成原来的两倍</span></span><br><span class="line">        resize(<span class="number">2</span> * table.length);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//原链表添加新元素==&gt;新链表</span></span><br><span class="line"><span class="comment">//h=hash值，k=新元素key，v=新元素value，n=原链表</span></span><br><span class="line">Entry(<span class="keyword">int</span> h, K k, V v, Entry&lt;K,V&gt; n) &#123;</span><br><span class="line">    value = v;</span><br><span class="line">    <span class="comment">//next指向了原链表，新元素插入到了原链表头部</span></span><br><span class="line">    next = n;</span><br><span class="line">    key = k;</span><br><span class="line">    hash = h;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//扩容方法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> newCapacity)</span> </span>&#123;</span><br><span class="line">    Entry[] oldTable = table;</span><br><span class="line">    <span class="keyword">int</span> oldCapacity = oldTable.length;</span><br><span class="line">    <span class="keyword">if</span> (oldCapacity == MAXIMUM_CAPACITY) &#123;</span><br><span class="line">        threshold = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Entry[] newTable = <span class="keyword">new</span> Entry[newCapacity];</span><br><span class="line">    <span class="comment">//老table重新hash到新table上</span></span><br><span class="line">    transfer(newTable);</span><br><span class="line">    table = newTable;</span><br><span class="line">    threshold = (<span class="keyword">int</span>)(newCapacity * loadFactor);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">transfer</span><span class="params">(Entry[] newTable)</span> </span>&#123;</span><br><span class="line">    Entry[] src = table;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = newTable.length;</span><br><span class="line">    <span class="comment">//遍历老table</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; src.length; j++) &#123;</span><br><span class="line">        Entry&lt;K,V&gt; e = src[j];</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123;</span><br><span class="line">            src[j] = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                <span class="comment">//①</span></span><br><span class="line">                Entry&lt;K,V&gt; next = e.next;</span><br><span class="line">                <span class="comment">//重新计算数组下标</span></span><br><span class="line">                <span class="keyword">int</span> i = indexFor(e.hash, newCapacity);</span><br><span class="line">                <span class="comment">//下面三步重新组装链表挂在此下标位置</span></span><br><span class="line">                <span class="comment">//但是顺便颠倒了，因为采用头插法（newTable[i]=next）</span></span><br><span class="line">                e.next = newTable[i];</span><br><span class="line">                newTable[i] = e;</span><br><span class="line">                <span class="comment">//v</span></span><br><span class="line">                e = next;</span><br><span class="line">            &#125; <span class="keyword">while</span> (e != <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>通过上面源码看出1.7确实采用<strong>头插法</strong>，那头插法有什么问题呢？下面我们画图来解释一波</p>
-<p><img src="https://zhanpg.gitee.io/pic/mianshi/hashmap1.7-1.jpg" alt="HashMap1.7"></p>
+<p><img src="https://zhanpengguo.github.io/pic/mianshi/hashmap1.7-1.jpg" alt="HashMap1.7"></p>
 <p>如果两个线程（线程A和线程B）同时进行扩容，线程A走到步骤①时被挂起，然后线程B走完全程，最后线程A再继续执行。因为扩容以后，元素会重新插入到新下标下，插入采用的是头插法，那么到新下标以后，链表顺序会反转，这时，如果线程并发扩容，会形成一个环形链表。</p>
 <p>如果形成环形链表，当调用get()方法时，刚好映射到环形链表，就会出现死循环。</p>
 <p>为了避免出现环形链表，jdk1.8开始使用尾插法。我们平时开发的时候，如果在并发环境下最好使用ConcurrentHashMap。</p>
@@ -286,7 +286,7 @@
 <hr>
 <center>扫一扫，关注我</center>
 
-<p><img src="https://zhanpg.gitee.io/pic/me/qrcode-8cm.jpg#pic_center"></p>
+<p><img src="https://zhanpengguo.github.io/pic/me/qrcode-8cm.jpg#pic_center"></p>
 
     </div>
 

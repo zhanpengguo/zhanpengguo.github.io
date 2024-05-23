@@ -25,13 +25,13 @@
 <meta property="og:url" content="http://blog.zhanpg.top/2020/03/10/00-00-00/index.html">
 <meta property="og:site_name" content="pipi蛋">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/background/4/1.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/jvm/jvm-6.png">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/jvm/jvm-8.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/jvm/jvm-9.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/jvm/jvm-10.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/jvm/jvm-11.jpg">
-<meta property="og:image" content="https://zhanpg.gitee.io/pic/jvm/jvm-12.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/background/4/1.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/jvm/jvm-6.png">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/jvm/jvm-8.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/jvm/jvm-9.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/jvm/jvm-10.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/jvm/jvm-11.jpg">
+<meta property="og:image" content="https://zhanpengguo.github.io/pic/jvm/jvm-12.jpg">
 <meta property="article:published_time" content="2020-03-09T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-02-19T01:06:03.623Z">
 <meta property="article:author" content="pipi蛋">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="jvm">
 <meta property="article:tag" content="GC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhanpg.gitee.io/pic/background/4/1.jpg">
+<meta name="twitter:image" content="https://zhanpengguo.github.io/pic/background/4/1.jpg">
 
 <link rel="canonical" href="http://blog.zhanpg.top/2020/03/10/00-00-00/">
 
@@ -263,7 +263,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="https://zhanpg.gitee.io/pic/background/4/1.jpg" style="zoom: 40%;"/>
+        <img src="https://zhanpengguo.github.io/pic/background/4/1.jpg" style="zoom: 40%;"/>
 
 <a id="more"></a>
 
@@ -277,7 +277,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//运行结果</span></span><br><span class="line">[GC (System.gc()) [PSYoungGen: 7905K-&gt;872K(36864K)] 7905K-&gt;880K(121856K), <span class="number">0.0010043</span> secs] [Times: user=<span class="number">0.00</span> sys=<span class="number">0.00</span>, real=<span class="number">0.00</span> secs] </span><br><span class="line">[<span class="function">Full <span class="title">GC</span> <span class="params">(System.gc()</span>) [PSYoungGen: 872K-&gt;0<span class="title">K</span><span class="params">(36864K)</span>] [ParOldGen: 8K-&gt;762<span class="title">K</span><span class="params">(84992K)</span>] 880K-&gt;762<span class="title">K</span><span class="params">(121856K)</span>, [Metaspace: 3494K-&gt;3494<span class="title">K</span><span class="params">(1056768K)</span>], 0.0057376 secs] [Times: user</span>=<span class="number">0.05</span> sys=<span class="number">0.00</span>, real=<span class="number">0.02</span> secs] </span><br></pre></td></tr></table></figure>
 <p>但运行结果显示，这两个对象被回收了，说明<strong>虚拟机并不是使用引用计数法来判断对象是否存活的</strong>。</p>
 <h3 id="可达性分析"><a href="#可达性分析" class="headerlink" title="可达性分析"></a>可达性分析</h3><p>在主流的Java虚拟机中，都是通过可达性分析来判定对象是否存活的。这个算法基本思想是通过一系列的<strong>GC Roots</strong>作为起始点，从这些节点开始向下搜索，搜索走过的路叫做引用链，当一个对象到GC Roots没有任何引用链时，则此对象是不可用的。如下图</p>
-<p><img src="https://zhanpg.gitee.io/pic/jvm/jvm-6.png" alt="可达性分析"></p>
+<p><img src="https://zhanpengguo.github.io/pic/jvm/jvm-6.png" alt="可达性分析"></p>
 <p>对象Object5、Object6和Object7虽然互相关联，但是它们到GC Roots没有任何引用链，则它们会被判定成可回收的对象。</p>
 <p>可作为GC Roots对象有下面几种：</p>
 <ul>
@@ -296,17 +296,17 @@
 </ul>
 <h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><h3 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记-清除算法"></a>标记-清除算法</h3><p>最基础的收集算法就是标记-清除算法，它分为两个阶段：首先标记所有需要回收的对象，标记采用的是前面所说的可达性分析，在标记以后统一回收被标记的对象。</p>
 <p>标记-清除算法主要有两点不足：一个是效率问题，标记和清楚两个过程的效率都不高；另一个是会产生大量不连续的内存碎片。</p>
-<p><img src="https://zhanpg.gitee.io/pic/jvm/jvm-8.jpg" alt="标记-清除算法"></p>
+<p><img src="https://zhanpengguo.github.io/pic/jvm/jvm-8.jpg" alt="标记-清除算法"></p>
 <h3 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h3><p>为了解决效率问题，复制算法出现了，它将可用的内存分为大小相等的两块，每次只使用其中的一块。当这一块内存用完了，就将还存活的对象复制到另一块上，然后把这块全部清理掉，这样使得每次都是对整个半区进行回收，实现简单，效率还高。但是这种算法的代价就是将内存缩小为了原来的一半。</p>
-<p><img src="https://zhanpg.gitee.io/pic/jvm/jvm-9.jpg" alt="复制算法"></p>
+<p><img src="https://zhanpengguo.github.io/pic/jvm/jvm-9.jpg" alt="复制算法"></p>
 <p><strong>现在大部分虚拟机都是采用复制算法来回收新生代</strong>，具体的回收过程后面再介绍。</p>
 <h3 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h3><p>复制算法适合用在对象存活率较低的时候，但是在老年代中，对象存活率很高，所以老年代一般不直接使用复制算法，而是使用标记-整理算法。标记过程和标记-清理算法一样，但后续不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。</p>
-<p><img src="https://zhanpg.gitee.io/pic/jvm/jvm-10.jpg" alt="标记-整理算法"></p>
+<p><img src="https://zhanpengguo.github.io/pic/jvm/jvm-10.jpg" alt="标记-整理算法"></p>
 <h3 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h3><p>当前商业虚拟机的垃圾收集算法都是采用分代收集算法，这种算法并没有什么新的思想，只是根据对象存活周期的不同将内存划分为几块，一般分为新生代和老年代，新生代存活率较低，所以采用复制算法；而老年代存活率较高，所以采用标记-清理或者标记-整理算法。</p>
 <h2 id="回收策略"><a href="#回收策略" class="headerlink" title="回收策略"></a>回收策略</h2><p>新生代一般分为Eden区和Survivor区，Survivor一般会分为From区和To区。一般对象会先进入Eden区，但是有的大对象（比如长字符串和大数组）会直接进入老年代。Eden区和两个Survivor区空间比例是8:1:1。</p>
 <p>第一次GC回收，Eden区里存活的对象复制到From中，然后Eden区全部清理；第二次GC回收，Eden区和From区中的存活对象复制到To区中，然后Eden和From区全部清理；第三次GC回收，Eden区和To区中的存活对象复制到From区中，然后Eden和To区全部清理；以此类推，每次对象移动，年龄都会+1，当对象年龄达到15时，此对象会进入老年代。</p>
-<p><img src="https://zhanpg.gitee.io/pic/jvm/jvm-11.jpg" alt="垃圾回收策略1"></p>
-<p><img src="https://zhanpg.gitee.io/pic/jvm/jvm-12.jpg" alt="垃圾回收策略2"></p>
+<p><img src="https://zhanpengguo.github.io/pic/jvm/jvm-11.jpg" alt="垃圾回收策略1"></p>
+<p><img src="https://zhanpengguo.github.io/pic/jvm/jvm-12.jpg" alt="垃圾回收策略2"></p>
 
     </div>
 
